@@ -1,5 +1,6 @@
 #include "CreditSort.h"
 #include <algorithm>
+#include<vector>
 
 void CreditSort::bubbleSortAsc(std::vector<Person>& persons) {
     int n = persons.size();
@@ -48,4 +49,45 @@ void CreditSort::secondName(std::vector<Person>& persons)
             }
         }
     }
+}
+
+int CreditSort::binarySearch(const std::vector<Person>& persons, double targetCredit) {
+    int left = 0;
+    int right = persons.size() - 1;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (persons[mid].credit == targetCredit) {
+            return mid; // Zwróæ indeks osoby
+        }
+        else if (persons[mid].credit > targetCredit) {
+            right = mid - 1;
+        }
+        else {
+            left = mid + 1;
+        }
+    }
+
+    return -1;
+}
+int CreditSort::binarySearchByName(const std::vector<Person>& persons, const std::string& targetName) {
+    int left = 0;
+    int right = persons.size() - 1;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (persons[mid].name == targetName) {
+            return mid;
+        }
+        else if (persons[mid].name < targetName) {
+            left = mid + 1;
+        }
+        else {
+            right = mid - 1;
+        }
+    }
+
+    return -1;
 }

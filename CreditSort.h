@@ -11,4 +11,6 @@ public:
     void bubbleSortDesc(std::vector<Person>& persons);
     void nameSort(std::vector<Person>& persons);
     void secondName(std::vector<Person>& persons);
+    int binarySearch(const std::vector<Person>& persons, double targetCredit);
+    int binarySearchByName(const std::vector<Person>& persons, const std::string& targetName);
 };
