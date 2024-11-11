@@ -91,3 +91,13 @@ int CreditSort::binarySearchByName(const std::vector<Person>& persons, const std
 
     return -1;
 }
+
+
+void CreditSort::showData(std::vector<Person>&persons)
+{
+    system("cls");
+    for (const auto& pers : persons) {
+        std::cout<< "Nazwisko: " << pers.secondName+"," << " Imie: " << pers.name + "," << " Data urodzenia: " << pers.birthDate + "," << " Kredyt: " << pers.credit << " PLN" << std::endl;
+    }
+    
+}

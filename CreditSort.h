@@ -3,6 +3,7 @@
 #include "CreditSort.h" 
 #include"Person.h"
 
+
 class CreditSort
 {
 public:
@@ -13,4 +14,5 @@ public:
     void secondName(std::vector<Person>& persons);
     int binarySearch(const std::vector<Person>& persons, double targetCredit);
     int binarySearchByName(const std::vector<Person>& persons, const std::string& targetName);
+    void showData(std::vector<Person>& persons);
 };
