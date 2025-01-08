@@ -78,10 +78,9 @@ void Logic::choice(std::vector<Person>&persons)
                         std::cout << "Niepoprawny format daty. Uzyj formatu DD.MM.RRRR" << std::endl;
                     }
                 }
-            
+
                 std::cout << "Podaj kredyt: ";
                 std::cin >> credit;
-                std::cin.ignore();
 
                 persons.push_back({ name, secondName, birthDate, credit });
                 std::cout << std::endl;
@@ -107,12 +106,12 @@ void Logic::choice(std::vector<Person>&persons)
                     std::string targetName;
                     std::cout << "Podaj imie: ";
                     std::getline(std::cin, targetName);
-                   
+
 
                     sorter.nameSort(persons);
 
                     int index = sorter.binarySearchByName(persons, targetName);
-                   
+
                     if (index != -1)
                     {
                         system("cls");
@@ -137,11 +136,11 @@ void Logic::choice(std::vector<Person>&persons)
                     sorter.secondName(persons);
 
                     int index = sorter.binarySearchBySecondName(persons, secondName);
-                    if(index != -1)
+                    if (index != -1)
                     {
                         system("cls");
-                        std::cout<<"Znaleziono: "
-                            <<persons[index].name<< " "
+                        std::cout << "Znaleziono: "
+                            << persons[index].name << " "
                             << persons[index].secondName << " "
                             << persons[index].birthDate << " "
                             << persons[index].credit << std::endl;
@@ -157,11 +156,25 @@ void Logic::choice(std::vector<Person>&persons)
                     //birth date
                     std::string birthDate;
                     std::cout << "Podaj date urodzenia: " << std::endl;
-                    std::cin >> birthDate;
-
-                   // int index = searchByBirthDate(persons, birthDate);
+                    std::getline(std::cin, birthDate);
+                    sorter.bubbleSortAsc(persons);
+                    int index = sorter.binarySearchByBirthDate(persons, birthDate);
+                    if (index != -1)
+                    {
+                        system("cls");
+                        std::cout << "Znaleziono: "
+                            << persons[index].name << " "
+                            << persons[index].secondName << " "
+                            << persons[index].birthDate << " "
+                            << persons[index].credit << std::endl;
+                    }
+                    else
+                    {
+                        std::cout << "Nie znaleziono takiej daty." << std::endl;
+                    }
                     break;
                 }
+
                 case 4:
                 {
                     std::string credit_str;
@@ -175,17 +188,17 @@ void Logic::choice(std::vector<Person>&persons)
                         std::cerr << "Bledne dane. Mozliwy zly format tekstu. ";
                         break;
                     }
-                   
+
                     sorter.bubbleSortAsc(persons);
                     int index = sorter.binarySearch(persons, credit);
 
                     if (index != -1)
                     {
                         system("cls");
-                        std::cout<<persons[index].name<<" "
-                            << persons[index].secondName <<" "
-                            << persons[index].birthDate<<" "
-                            << persons[index].credit<<std::endl;
+                        std::cout << persons[index].name << " "
+                            << persons[index].secondName << " "
+                            << persons[index].birthDate << " "
+                            << persons[index].credit << std::endl;
                     }
                     else
                     {
@@ -193,7 +206,7 @@ void Logic::choice(std::vector<Person>&persons)
                     }
                     break;
                 }
-               }
+                }
             }
 
             case 9: {

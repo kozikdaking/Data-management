@@ -114,6 +114,28 @@ int CreditSort::binarySearchBySecondName(const std::vector<Person>& persons, con
     return -1;
 }
 
+int CreditSort::binarySearchByBirthDate(const std::vector<Person>& persons, const std::string& birthDate)
+{
+    int left = 0;
+    int right = persons.size() - 1;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (persons[mid].birthDate == birthDate) {
+            return mid;
+        }
+        else if (persons[mid].birthDate < birthDate) {
+            left = mid + 1;
+        }
+        else {
+            right = mid - 1;
+        }
+    }
+
+    return -1;
+}
+
 /*int CreditSort::searchByBirthDate(const std::vector<Person> persons, const std::string& birthDate)
 {
     int birthDateInt;

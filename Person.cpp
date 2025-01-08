@@ -32,6 +32,11 @@ bool isValidSecondName(const std::string& secondName)
     return true;
 }
 
+bool isValidCredit(const float& credit)
+{
+    return false;
+}
+
 bool isValidDate(const std::string& date)
 {
     if(date.size()!=10) return false;
