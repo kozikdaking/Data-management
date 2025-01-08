@@ -53,10 +53,7 @@ void Logic::choice(std::vector<Person>&persons)
                     {
                         validName = true;
                     }
-                    else
-                    {
-                        std::cout << "Imie nie moze zawierac cyfr!" << std::endl;
-                    }
+
                 }
 
                 bool validSecondName = false;
@@ -69,15 +66,19 @@ void Logic::choice(std::vector<Person>&persons)
                     {
                         validSecondName = true;
                     }
+
+                }
+                while (true)
+                {
+                    std::cout << "Podaj date urodzenia (DD.MM.RRRR): ";
+                    std::cin >> birthDate;
+                    if (isValidDate(birthDate)) break;
                     else
                     {
-                        std::cout << "Nazwisko nie moze zawierac cyfr!" << std::endl;
+                        std::cout << "Niepoprawny format daty. Uzyj formatu DD.MM.RRRR" << std::endl;
                     }
                 }
-
-                std::cout << "Podaj date urodzenia: ";
-                std::getline(std::cin, birthDate);
-
+            
                 std::cout << "Podaj kredyt: ";
                 std::cin >> credit;
                 std::cin.ignore();
@@ -129,27 +130,77 @@ void Logic::choice(std::vector<Person>&persons)
                 }
                 case 2:
                 {
+                    std::string secondName;
+                    std::cout << "Podaj nazwisko: ";
+                    std::getline(std::cin, secondName);
 
+                    sorter.secondName(persons);
+
+                    int index = sorter.binarySearchBySecondName(persons, secondName);
+                    if(index != -1)
+                    {
+                        system("cls");
+                        std::cout<<"Znaleziono: "
+                            <<persons[index].name<< " "
+                            << persons[index].secondName << " "
+                            << persons[index].birthDate << " "
+                            << persons[index].credit << std::endl;
+                    }
+                    else
+                    {
+                        std::cout << "Nie znaleziono takiej osoby" << std::endl;
+                    }
                     break;
                 }
                 case 3:
                 {
+                    //birth date
+                    std::string birthDate;
+                    std::cout << "Podaj date urodzenia: " << std::endl;
+                    std::cin >> birthDate;
 
+                   // int index = searchByBirthDate(persons, birthDate);
                     break;
                 }
                 case 4:
                 {
+                    std::string credit_str;
+                    std::cout << "Podaj kwote kredytu" << std::endl;
+                    std::getline(std::cin, credit_str);
+                    std::istringstream iss(credit_str);
+                    float credit;
 
+                    if (!(iss >> credit))
+                    {
+                        std::cerr << "Bledne dane. Mozliwy zly format tekstu. ";
+                        break;
+                    }
+                   
+                    sorter.bubbleSortAsc(persons);
+                    int index = sorter.binarySearch(persons, credit);
+
+                    if (index != -1)
+                    {
+                        system("cls");
+                        std::cout<<persons[index].name<<" "
+                            << persons[index].secondName <<" "
+                            << persons[index].birthDate<<" "
+                            << persons[index].credit<<std::endl;
+                    }
+                    else
+                    {
+                        std::cout << "Brak takiego kredytu" << std::endl;
+                    }
                     break;
                 }
                }
             }
 
             case 9: {
-                std::cout << "quit" << std::endl;
                 break;
             }
             }
 
         } while (choose != 9);
-    }
+}
+    

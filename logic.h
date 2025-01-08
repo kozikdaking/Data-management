@@ -11,6 +11,5 @@ public:
     void choice(std::vector<Person>& persons);
     int choose;
     int chooseSearch;
-    
 };
 

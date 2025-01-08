@@ -14,5 +14,7 @@ public:
     void secondName(std::vector<Person>& persons);
     int binarySearch(const std::vector<Person>& persons, double targetCredit);
     int binarySearchByName(const std::vector<Person>& persons, const std::string& targetName);
+    int binarySearchBySecondName(const std::vector<Person>& persons, const std::string& secondName);
+    /* int searchByBirthDate(const std::vector<Person>persons, const std::string& birthDate);*/
     void showData(std::vector<Person>& persons);
 };

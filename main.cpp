@@ -20,8 +20,8 @@ int main() {
     persons.push_back({ "Jan", "Tomek", "14.10.1992", 22000.00 });
     persons.push_back({ "Patrycja", "Kaczmarek", "11.01.1987", 12450.10 });
     persons.push_back({ "Ola", "Nowak", "17.08.2000", 18930.60 });
-    persons.push_back({ "Piotr", "Zielinski", "09.12.1999", 52000.25 });
-    persons.push_back({ "Monika", "Kwiatkowska", "27.09.1993", 78420.30 });
+    persons.push_back({ "Piotr", "Zielinski", "09.12.1999", 123 });
+    persons.push_back({ "Monika", "Kwiatkowska", "27.09.1993", 123 });
 
     logic.choice(persons);
 

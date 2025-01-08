@@ -51,6 +51,7 @@ void CreditSort::secondName(std::vector<Person>& persons)
     }
 }
 
+
 int CreditSort::binarySearch(const std::vector<Person>& persons, double targetCredit) {
     int left = 0;
     int right = persons.size() - 1;
@@ -91,6 +92,41 @@ int CreditSort::binarySearchByName(const std::vector<Person>& persons, const std
 
     return -1;
 }
+
+int CreditSort::binarySearchBySecondName(const std::vector<Person>& persons, const std::string& secondName) {
+    int left = 0;
+    int right = persons.size() - 1;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (persons[mid].secondName == secondName) {
+            return mid;
+        }
+        else if (persons[mid].secondName < secondName) {
+            left = mid + 1;
+        }
+        else {
+            right = mid - 1;
+        }
+    }
+
+    return -1;
+}
+
+/*int CreditSort::searchByBirthDate(const std::vector<Person> persons, const std::string& birthDate)
+{
+    int birthDateInt;
+    for (size_t i = 0; i < persons.size(); i++)
+    {
+        std::istringstream(birthDate, birthDateInt);
+        if (persons[i].birthDate == birthDate)
+        {
+            return i;
+        }
+        return -1;
+    }
+}*/
 
 
 void CreditSort::showData(std::vector<Person>&persons)
