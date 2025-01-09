@@ -32,10 +32,19 @@ bool isValidSecondName(const std::string& secondName)
     return true;
 }
 
-bool isValidCredit(const float& credit)
-{
-    return false;
-}
+
+    bool isValidNumber(const std::string & numberString)
+    {
+        for (char c : numberString)
+        {
+            if (!std::isdigit(c))
+            {
+                std::cout << "Ciag znakow nie moze zawierac liter ani znakow specjalnych! ";
+                return false;
+            }
+        }
+        return true;
+    }
 
 bool isValidDate(const std::string& date)
 {

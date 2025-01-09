@@ -103,14 +103,60 @@ void Logic::choice(std::vector<Person>&persons)
                 {
                 case 1:
                 {
+                    //-------------------------------------------------------------IMIE--------------------------------------------------------------------
                     std::string targetName;
+                    
+                    while (true)
+                    {
+                    bool ValidName = true;
                     std::cout << "Podaj imie: ";
                     std::getline(std::cin, targetName);
-
+                   
+                    if (!isValidName(targetName))
+                    {
+                        system("cls");
+                        std::cout << "Imie moze zawierac tylko litery." << std::endl;
+                        continue;
+                    }
 
                     sorter.nameSort(persons);
-
                     int index = sorter.binarySearchByName(persons, targetName);
+
+                   
+                    if (index != -1)
+                    {
+                        system("cls");
+                        std::cout << "Znaleziono: "
+                            << persons[index].name << " "
+                            << persons[index].secondName << " "
+                            << persons[index].birthDate << " "
+                            << persons[index].credit << std::endl;
+                    }
+                    else
+                    {
+                        std::cout << "Nie znaleziono takiej osoby" << std::endl;
+                    }
+                    break;
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    while (true)
+                    {
+                    bool validSecondName = true;
+                    std::string secondName;
+                    std::cout << "Podaj nazwisko: ";
+                    std::getline(std::cin, secondName);
+                    if (!isValidSecondName(secondName))
+                    {
+                        system("cls");
+                        std::cout << "Nazwisko nie moze zawierac cyfr." << std::endl;
+                        continue;
+                    }
+                    
+                    sorter.secondName(persons);
+                    int index = sorter.binarySearchBySecondName(persons, secondName);
 
                     if (index != -1)
                     {
@@ -127,35 +173,13 @@ void Logic::choice(std::vector<Person>&persons)
                     }
                     break;
                 }
-                case 2:
-                {
-                    std::string secondName;
-                    std::cout << "Podaj nazwisko: ";
-                    std::getline(std::cin, secondName);
-
-                    sorter.secondName(persons);
-
-                    int index = sorter.binarySearchBySecondName(persons, secondName);
-                    if (index != -1)
-                    {
-                        system("cls");
-                        std::cout << "Znaleziono: "
-                            << persons[index].name << " "
-                            << persons[index].secondName << " "
-                            << persons[index].birthDate << " "
-                            << persons[index].credit << std::endl;
-                    }
-                    else
-                    {
-                        std::cout << "Nie znaleziono takiej osoby" << std::endl;
-                    }
                     break;
                 }
                 case 3:
                 {
                     //birth date
                     std::string birthDate;
-                    std::cout << "Podaj date urodzenia: " << std::endl;
+                    std::cout << "Podaj date urodzenia, format to MM.DD.YYYY: "<< std::endl;
                     std::getline(std::cin, birthDate);
                     sorter.bubbleSortAsc(persons);
                     int index = sorter.binarySearchByBirthDate(persons, birthDate);
